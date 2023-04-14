@@ -2,13 +2,20 @@
 const express = require("express");
 const app = express();
 app.set("view engine","ejs")
+
+const data = [
+    {id: 1,name : "iphone 11", price: 10000,isActive : true},
+    {id: 2,name : "iphone 12", price: 20000,isActive : true},
+    {id: 3,name : "iphone 13", price: 30000,isActive : true},
+    {id: 4,name : "iphone 14", price: 40000,isActive : true},
+];
 // routes
 app.use("/products/:id", (req, res) => {
-  res.render("urunler-datails") ;
+  res.render("product-datails") ;
  
 });
 app.use("/products", (req, res) => {
-  res.render("urunler");
+  res.render("products",{urunler : data});
 });
 app.use("/", (req, res) => {
   res.render("index");
